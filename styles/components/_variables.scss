@@ -1,0 +1,12 @@
+$primary: #3dbeff;
+$secondary: #fffbf8;
+$tertiary: #90d4c5;
+$text: #263240;
+$text-2: #2d7464;
+$white: white;
+$black: black;
+@mixin position($align: center, $justify: center) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+}

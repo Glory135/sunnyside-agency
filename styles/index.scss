@@ -1,0 +1,402 @@
+@import "./components/variables";
+@import "./components/breakpoints";
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+header {
+  @include position(center, _);
+  flex-direction: column;
+  width: 100%;
+  height: 120vh;
+  padding: 0;
+  background-color: $primary;
+  @include sm {
+    height: 100vh;
+  }
+
+  & .top {
+    @include position(center, space-between);
+    position: absolute;
+    top: 0;
+    height: 10%;
+    width: 90%;
+    @include sm {
+      width: 100%;
+      padding: 0 10px;
+    }
+    & .bars {
+      display: none;
+      @include sm {
+        display: block;
+      }
+    }
+    & .cancel {
+      display: none;
+    }
+
+    & nav {
+      @include position(center, _);
+      height: 100%;
+      width: auto;
+      @include sm {
+        display: none;
+      }
+      & ul {
+        @include position;
+        list-style-type: none;
+        & li {
+          color: $white;
+          margin-left: 40px;
+          padding: 15px 20px;
+          border-radius: 25px;
+          &:hover {
+            cursor: pointer;
+            transition: 0.5s;
+            background-color: lighten($primary, 10);
+          }
+        }
+      }
+    }
+  }
+  & .media-nav {
+    display: none;
+    @include sm {
+      @include position;
+      display: none;
+      width: 90vw;
+      height: 300px;
+      position: absolute;
+      top: 15vh;
+      left: 5vw;
+      background-color: white;
+      & nav {
+        @include position;
+        width: 100%;
+        height: 70%;
+        & ul {
+          @include position(center, space-between);
+          flex-direction: column;
+          width: 100%;
+          height: 100%;
+          list-style-type: none;
+          padding: 0;
+          & li {
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            &:hover {
+              transition: 0.5s;
+              background-color: #fed501;
+            }
+          }
+        }
+      }
+    }
+  }
+  & .header-text {
+    @include position;
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    height: 30%;
+    & h1 {
+      color: $white;
+      font-size: 90px;
+      @include sm {
+        font-size: 45px;
+        text-align: center;
+        // display: none;
+      }
+    }
+  }
+
+  & .arrow {
+    position: absolute;
+    height: 150px;
+    top: 50%;
+    @include sm {
+      top: 40%;
+      height: 100px;
+      // display: none;
+    }
+  }
+
+  & .header-img {
+    width: 100%;
+    height: 122vh;
+    object-fit: contain;
+    @include sm {
+      height: 100vh;
+      object-fit: fill;
+      object-position: center;
+    }
+  }
+}
+
+.grid {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  & .cell {
+    @include position;
+    width: 50%;
+    height: 90vh;
+    background-color: $secondary;
+    @include sm {
+      width: 100%;
+    }
+    & .cell-text-1 {
+      @include position(_, space-between);
+      flex-direction: column;
+      width: 60%;
+      height: 50%;
+      @include sm {
+        width: 70%;
+        height: 75%;
+        text-align: center;
+        align-items: center;
+      }
+      & h2 {
+        font-size: 39px;
+        color: lighten($black, 20);
+        @include sm {
+          font-size: 25px;
+        }
+      }
+      & p {
+        color: lighten($black, 50);
+      }
+      & .link-container {
+        @include position;
+        height: 10px;
+        width: 130px;
+        position: relative;
+        & a {
+          @include position;
+          width: 100%;
+          flex-direction: column;
+          font-size: 20px;
+          font-weight: bold;
+          position: absolute;
+          top: -13px;
+        }
+        &::after {
+          content: "";
+          display: block;
+          margin: 0;
+          width: 0;
+          height: 10px;
+          border-radius: 20px;
+        }
+        &.first::after {
+          background-color: #fdd302;
+        }
+        &.second::after {
+          background-color: #ff7163;
+        }
+        &:hover::after {
+          width: 100%;
+          transition: 0.5s;
+        }
+      }
+    }
+    & img {
+      width: 100%;
+      height: 100%;
+    }
+    &.last {
+      @include position(flex-end, center);
+      height: 100vh;
+      background-position: center;
+      background-size: cover;
+      &.last-1 {
+        background-image: url(../images/desktop/image-graphic-design.jpg);
+        @include sm {
+          background-image: url(../images/mobile/image-graphic-design.jpg);
+        }
+        & .last-text {
+          color: #1f564c;
+        }
+      }
+      &.last-2 {
+        background-image: url(../images/desktop/image-photography.jpg);
+        @include sm {
+          background-image: url(../images/mobile/image-photography.jpg);
+        }
+        & .last-text {
+          color: #1c5975;
+        }
+      }
+      & .last-text {
+        width: 50%;
+        height: 35%;
+        text-align: center;
+        @include sm {
+          width: 90%;
+          height: 40%;
+        }
+        & h2 {
+          margin-bottom: 20px;
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}
+
+.testimonials {
+  @include position;
+  width: 100%;
+  height: 100vh;
+  background-color: $secondary;
+  @include sm {
+    height: auto;
+  }
+  & .testimonials-container {
+    width: 80%;
+    height: 80%;
+    @include sm {
+      height: auto;
+      margin: 50px 0;
+    }
+    & > h2 {
+      @include position;
+      color: lighten($black, 50);
+      height: 30%;
+      width: 100%;
+      @include sm {
+        margin-bottom: 50px;
+      }
+    }
+    & .testimonials-main-container {
+      @include position(center, space-between);
+      height: 60%;
+      width: 100%;
+      @include sm {
+        height: auto;
+        flex-direction: column;
+      }
+      & .testimonial {
+        @include position(center, space-between);
+        flex-direction: column;
+        width: 30%;
+        height: 100%;
+        @include sm {
+          height: 250px;
+          width: 100%;
+          margin-bottom: 50px;
+        }
+        & .avatar {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          @include sm {
+            width: 70px;
+            height: 70px;
+          }
+        }
+        & p {
+          color: lighten($black, 50);
+          text-align: center;
+          font-weight: bold;
+        }
+        & .desc {
+          text-align: center;
+          & h2 {
+            font-size: 17px;
+          }
+          & p {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}
+.gallery {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  flex-wrap: wrap;
+  & .gallery-img {
+    width: 25%;
+    height: 100%;
+    @include sm {
+      width: 50%;
+      height: 50%;
+    }
+    & img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+footer {
+  @include position;
+  width: 100%;
+  height: 50vh;
+  background-color: $tertiary;
+  & .footer-text-container {
+    @include position(center, space-between);
+    flex-direction: column;
+    width: 50%;
+    height: 60%;
+    @include sm {
+      width: 80%;
+    }
+    & nav {
+      width: 45%;
+      @include sm {
+        width: 100%;
+      }
+      & ul {
+        @include position(center, space-between);
+        width: 100%;
+        padding: 0;
+        list-style-type: none;
+        & li {
+          color: $text-2;
+          font-weight: bold;
+          &:hover {
+            transition: 0.5s;
+            color: $white;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    & .socials {
+      @include position(_, space-between);
+      width: 30%;
+      @include sm {
+        width: 50%;
+      }
+      & img {
+        &:hover {
+          cursor: pointer;
+          fill: white;
+        }
+      }
+    }
+  }
+}
+
+.attribution {
+  background-color: $tertiary;
+  width: 100%;
+  font-size: 11px;
+  text-align: center;
+  & a {
+    color: hsl(228, 45%, 44%);
+  }
+}
